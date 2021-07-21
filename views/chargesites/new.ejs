@@ -1,0 +1,48 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+  <h1 class="text-center">New Chargesite</h1>
+  <div class="col-6 offset-3">
+    <form action="/chargesites" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input class="form-control" type="text" name="title" id="title" required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input class="form-control" type="text" name="location" id="location" required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="images">Upload Images</label>
+        <input type="file" class="form-control" name="images" id="images" multiple>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="price">Chargesite Price (per 100kW)</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">$</span>
+          <input
+            class="form-control"
+            type="text"
+            name="price"
+            placeholder="0.00"
+            id="price"
+            aria-label="price"
+            aria-describedby="price-label"
+            required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" type="text" name="description" id="description" required></textarea>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success">Add Chargesite</button>
+      </div>
+    </form>
+    <a href="/chargesites/">All Chargesites</a>
+  </div>
+</div>
+

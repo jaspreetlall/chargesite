@@ -1,0 +1,63 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="row">
+  <h1 class="text-center">Edit Chargesite</h1>
+  <div class="col-6 offset-3">
+    <form action="/chargesites/<%= chargesite._id %>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input class="form-control" type="text" name="title" id="title" value="<%= chargesite.title %> " required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="location">Location</label>
+        <input class="form-control" type="text" name="location" id="location" value="<%= chargesite.location %> " required>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="input-group mb-3">
+        <label class="input-group-text" for="images">Add images</label>
+        <input type="file" class="form-control" id="images" name="images" multiple>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="price">Chargesite Price (per 100kW)</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price-label">$</span>
+          <input
+            class="form-control"
+            type="text"
+            name="price"
+            placeholder="0.00"
+            id="price"
+            value="<%= chargesite.price %> "
+            aria-label="price"
+            aria-describedby="price-label"
+            required>
+          <div class="valid-feedback">Looks good!</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea class="form-control" type="text" name="description" id="description" required><%= chargesite.description %> </textarea>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      
+      <!-- Delete Images -->
+      <!-- Create an array of image urls that are to be deleted -->
+      <!-- Send the array as part of form data -->
+      <div class="mb-3">
+        <% chargesite.images.forEach((img, i) => { %>
+        <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="">
+        <div class="form-check-inline">
+          <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=img.filename%>">
+        </div>
+        <label for="image-<%=i%>">Delete?</label>
+        <% }) %>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-info">Update Chargesite</button>
+      </div>
+    </form>
+    <a href="/chargesites/<%= chargesite._id %> ">Back to Chargesites</a>
+  </div>
+</div>
