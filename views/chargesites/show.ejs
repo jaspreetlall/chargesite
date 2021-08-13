@@ -39,7 +39,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item text-muted"><%= chargesite.location%></li>
         <li class="list-group-item">Submitted by <%= chargesite.author.username %></li>
-        <li class="list-group-item">$<%= chargesite.price%>/night</li>
+        <li class="list-group-item">$<%= chargesite.price%>/100kW</li>
       </ul>
       <!-- Showing Edit & Delete buttons only if the user owns the post -->
       <% if(currentUser && chargesite.author.equals(currentUser._id)) { %>
